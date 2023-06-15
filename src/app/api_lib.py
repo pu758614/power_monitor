@@ -16,6 +16,7 @@ class apiLib():
             "systemCode":self.domain 
         }
         response = requests.post(url, data=data)
+        print(response)
         
         
 
