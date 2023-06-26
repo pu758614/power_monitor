@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -73,16 +74,16 @@ WSGI_APPLICATION = 'web_minitor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'HOST': '127.0.0.1',
-#         'PORT': 5432,
-#         'PASSWORD': 'postgres',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'webmonitor',
+        'USER': 'webmonitor_user',
+        'HOST': '192.168.2.17',
+        'PORT': 3300,
+        'PASSWORD': 'webmonitor_pass',
+    }
+}
 
 
 # Password validation

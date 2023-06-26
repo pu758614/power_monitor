@@ -2,9 +2,22 @@ version: "3"
 services:
 
   db:
-    image: postgres
+    image: mariadb:10.6.5
+    container_name: webmonitor_mysql
+    hostname: mysql
+    restart: always
+    ports:
+      - 3300:3306
+    volumes:
+      - /home/web_monitor/db:/var/lib/mysql
+
     environment:
-      POSTGRES_PASSWORD: 'postgres'
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=webmonitor
+      - MYSQL_USER=webmonitor_user
+      - MYSQL_PASSWORD=webmonitor_pass
+      - MYSQL_ROOT_PASSWORD=webmonitor_pass
 
   web:
     build: .
@@ -13,3 +26,5 @@ services:
       - /home/web_monitor/src/.:/code
     ports:
       - "8000:8000"
+    depends_on:
+         - db

@@ -2,4 +2,5 @@ from app.api_lib import apiLib
 
 
 
-s = apiLib().login()
+api_lib = apiLib()
+# api_lib.stations()
