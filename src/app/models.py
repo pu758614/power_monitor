@@ -5,6 +5,6 @@ from django.utils import timezone
 
 class config(models.Model):
     name = models.CharField(max_length=20)
-    value = models.CharField(max_length=128)
-    create_time = models.DateTimeField( auto_now=False)
-    update_time = models.DateTimeField(default=timezone.now)
+    value = models.CharField(max_length=500)
+    create_time = models.DateTimeField( auto_now=False,default=timezone.now)
+    update_time = models.DateTimeField(auto_now=False,default=timezone.now)
