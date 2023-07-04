@@ -1,7 +1,18 @@
+import pprint
 from django.shortcuts import render
 from django.http.response import StreamingHttpResponse
 import vlc
+from app.api_lib import apiLib
 # Create your views here.
+
+
+def dashboard(request):
+    # data = apiLib().getDevKpiDay()
+    # pprint.pp(data)
+    # context = {
+    #     'media_player': media_player,
+    # }
+    return render(request, 'dashboard.html', {})
 
 def stream_rtsp(request):
     # 创建一个VLC实例
