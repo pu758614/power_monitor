@@ -3,16 +3,19 @@ from django.shortcuts import render
 from django.http.response import StreamingHttpResponse
 import vlc
 from app.api_lib import apiLib
-# Create your views here.
+from datetime import datetime
+from app import models
 
 
 def dashboard(request):
-    # data = apiLib().getDevKpiDay()
-    # pprint.pp(data)
-    # context = {
-    #     'media_player': media_player,
-    # }
-    return render(request, 'dashboard.html', {})
+  
+    data_list = models.dev_kpi_day.objects.filter().order_by('-collect_time')
+   
+    
+    context = {
+        'items': data_list,
+    }
+    return render(request, 'dashboard.html', context)
 
 def stream_rtsp(request):
     # 创建一个VLC实例

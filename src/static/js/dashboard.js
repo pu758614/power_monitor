@@ -26,21 +26,7 @@
               pointHoverRadius: [2, 2, 2, 2, 2,2, 2, 2, 2, 2,2, 2, 2],
               pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)'],
               pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
-          },{
-            label: 'Last week',
-            data: [30, 150, 190, 250, 120, 150, 130, 20, 30, 15, 40, 95, 180],
-            backgroundColor: saleGradientBg2,
-            borderColor: [
-                '#52CDFF',
-            ],
-            borderWidth: 1.5,
-            fill: true, // 3: no fill
-            pointBorderWidth: 1,
-            pointRadius: [0, 0, 0, 4, 0],
-            pointHoverRadius: [0, 0, 0, 2, 0],
-            pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)'],
-              pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
-        }]
+          }]
       };
   
       var salesTopOptions = {
