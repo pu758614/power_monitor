@@ -2,8 +2,6 @@ import pprint
 from django.shortcuts import render
 from django.http.response import StreamingHttpResponse
 import vlc
-from app.api_lib import apiLib
-from datetime import datetime
 from app import models
 
 

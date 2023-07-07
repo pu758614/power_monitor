@@ -1,7 +1,7 @@
 import json 
 from app import models
 from django.utils import timezone
-from app.api_lib import apiLib
+from app.lib.api_lib import apiLib
 from datetime import datetime
 
 class syncDataLib():
