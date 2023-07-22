@@ -390,7 +390,7 @@
                                                                     <button class="btn btn-secondary dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 選擇設備 </button>
                                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" style="">
                                                                         {% for dev_data in dev_list %}
-                                                                        <a class="dropdown-item" onclick="getDevKpiDayListSetDev({{ dev_data }})" href="#">{{ dev_data }}</a>
+                                                                        <a class="dropdown-item" onclick="getDevKpiDayListSetDev({{ dev_data }})" >{{ dev_data }}</a>
                                                                         {% endfor %}
                                                                     </div>
                                                                   </div>
@@ -422,8 +422,8 @@
                                                             <div class="row align-items-end justify-content-center">
                                                                 <span class="step-links">
                                                             
-                                                                    <a href="#" onclick="getDevKpiDayListAction('first')">&laquo; 第一頁</a>
-                                                                    <a href="#" onclick="getDevKpiDayListAction('prev')">上一頁</a>
+                                                                    <a href="javascript:void(0);"  onclick="getDevKpiDayListAction('first')">&laquo; 第一頁</a>
+                                                                    <a href="javascript:void(0);"  onclick="getDevKpiDayListAction('prev')">上一頁</a>
                                                                 
                                                                 
                                                                     <span class="current">
@@ -431,8 +431,8 @@
                                                                     </span>
                                                                 
                                                                 
-                                                                    <a href="#" onclick="getDevKpiDayListAction('next')">下一頁</a>
-                                                                    <a href="#" onclick="getDevKpiDayListAction('end')">最後一頁 &raquo;</a>
+                                                                    <a href="javascript:void(0);"  onclick="getDevKpiDayListAction('next')">下一頁</a>
+                                                                    <a href="javascript:void(0);"  onclick="getDevKpiDayListAction('end')">最後一頁 &raquo;</a>
                                                                 
                                                                 </span>
                                                             </div>
@@ -490,6 +490,7 @@
 
 
     function getDevKpiDayListSetDev(dev_id){
+        
         dev_kpi_day_list_dev_id = dev_id
         console.log(dev_kpi_day_list_count);
         $("#kpi_day_dev_id").text("")
