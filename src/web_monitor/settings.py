@@ -1,9 +1,9 @@
 import os
 from pathlib import Path
-
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+env = environ.Env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -68,8 +68,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'webmonitor',
         'USER': 'webmonitor_user',
-        'HOST': '192.168.1.110',
-        'PORT': 3333,
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
         'PASSWORD': 'webmonitor_pass',
     }
 }

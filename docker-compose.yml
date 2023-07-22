@@ -7,9 +7,9 @@ services:
     hostname: mysql
     restart: always
     ports:
-      - 3333:3306
+      - ${DB_PORT}:3306
     volumes:
-      - D:\code/power_monitor\db:/var/lib/mysql
+      - ${DB_VOLUMES}:/var/lib/mysql
 
     environment:
       - MYSQL_HOST=localhost
@@ -21,9 +21,17 @@ services:
 
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    env_file:
+      - .env
+    command: sh -c "service cron start && 
+                    echo ${TESTTEST} &&
+                    python /code/manage.py makemigrations &&
+                    python /code/manage.py migrate && 
+                    python manage.py runserver 0.0.0.0:8000"
+      
+
     volumes:
-      - D:\code/power_monitor\src/.:/code
+      - ${CODE_VOLUMES}.:/code
     ports:
       - "4000:8000"
     depends_on:
