@@ -2,14 +2,14 @@ version: "3"
 services:
 
   db:
-    image: mariadb:10.6.5
+    image: mariadb
     container_name: webmonitor_mysql
     hostname: mysql
     restart: always
     ports:
-      - 3300:3306
+      - 3333:3306
     volumes:
-      - /home/web_monitor/db:/var/lib/mysql
+      - D:\code/power_monitor\db:/var/lib/mysql
 
     environment:
       - MYSQL_HOST=localhost
@@ -23,8 +23,8 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - /home/web_monitor/src/.:/code
+      - D:\code/power_monitor\src/.:/code
     ports:
-      - "8000:8000"
+      - "4000:8000"
     depends_on:
          - db

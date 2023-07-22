@@ -2,6 +2,7 @@ import requests
 import json 
 from app import models
 from django.utils import timezone
+import time
 
 class apiLib():
     
@@ -40,11 +41,12 @@ class apiLib():
         return token
     
     def getDevKpiDay(self):
+        ts = round(time.time()*1000)
         url = f"{self.domain}/thirdData/getDevKpiDay"
         data = {
             "sns":"HV2250306978,HV2250306992,HV2250306925",
             "devTypeId":38,
-            "collectTime":1686535200000
+            "collectTime":ts
         }
         headers = {
             'xsrf-token':self.token

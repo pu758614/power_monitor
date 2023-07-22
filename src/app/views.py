@@ -3,15 +3,19 @@ from django.shortcuts import render
 from django.http.response import StreamingHttpResponse
 import vlc
 from app import models
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def dashboard(request):
   
     data_list = models.dev_kpi_day.objects.filter().order_by('-collect_time')
-   
-    
-    context = {
-        'items': data_list,
+    dev_list = []
+    for data in data_list:
+        if(data.dev_id not in dev_list):
+            dev_list.append(data.dev_id)
+    first_data = data_list.first()
+    context ={
+        "dev_list":dev_list,
+        "first_div_id":first_data.dev_id
     }
     return render(request, 'dashboard.html', context)
 
