@@ -533,7 +533,7 @@
             "dev_id":dev_kpi_day_list_dev_id
         };
         $.ajax({
-            url: "http://127.0.0.1:4000/api/getDevKpiDayList",
+            url: "/api/getDevKpiDayList",
             data: JSON.stringify(data_json),
             type: "POST",
             dataType: "json",
