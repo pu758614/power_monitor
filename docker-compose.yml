@@ -21,9 +21,11 @@ services:
 
   web:
     build: .
+    container_name: power_monitor_web
     env_file:
       - .env
     command: sh -c "service cron start && 
+                    service rsyslog restart &&
                     echo ${TESTTEST} &&
                     python /code/manage.py makemigrations &&
                     python /code/manage.py migrate && 

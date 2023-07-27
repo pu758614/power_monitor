@@ -4,7 +4,8 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
-
+PROJECT_NAME = 'power_monitor'
+LOG_DIR_ROOT = "/var/log/power_monitor"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
