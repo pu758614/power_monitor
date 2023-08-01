@@ -10,6 +10,6 @@ urlpatterns = [
     path('stream/', views.stream_rtsp, name='stream_rtsp'),
     path('dashboard', views.dashboard, name='dashboard'),
     path('api/getDevKpiDayList', api_view.getDevKpiDayList),
-    
+    path('api/getCurveLineData', api_view.getCurveLineData),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -6,6 +6,37 @@ from library import lib
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 @api_view(["POST"])
+def getCurveLineData(request):
+    dev_id = request.data.get('dev_id','')
+    data_list = models.dev_kpi_day.objects.filter(dev_id=dev_id).order_by('-collect_time')[0:29]
+    curve_line_data = []
+    curve_line_days = []
+    point_radius=[]
+    point_hover_radius=[]
+    point_background_color = []
+    point_border_color =[]
+    for data in data_list:
+        collect_time = str(data.collect_time)
+        collect_time_arr = collect_time.split(" ")
+        curve_line_data.append(data.product_power)
+        curve_line_days.append(collect_time_arr[0])
+        point_radius.append(4)
+        point_hover_radius.append(2)
+        point_background_color.append("#1F3BB3")
+        point_border_color.append("#fff")
+    curve_line_data.reverse()
+    curve_line_days.reverse()
+    return_data = {
+        "curve_line_data":curve_line_data,
+        "curve_line_days":curve_line_days,
+        "point_radius":point_radius,
+        "point_hover_radius":point_hover_radius,
+        "point_background_color":point_background_color,
+        "point_border_color":point_border_color,
+    }
+    return lib.apiResponse(0,return_data)
+
+@api_view(["POST"])
 def getDevKpiDayList(request):
     page = request.data.get('page',1)
     count = request.data.get('count',10)

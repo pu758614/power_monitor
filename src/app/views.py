@@ -17,18 +17,30 @@ def dashboard(request):
     station_real_kpi_query=models.config.objects.filter(name='station_real_kpi').first()
     month_power = total_power = day_power = ''
     if(station_real_kpi_query!=''):
-        
         station_real_kpi_data =json.loads(station_real_kpi_query.text)
         month_power = station_real_kpi_data['month_power']
         total_power = station_real_kpi_data['total_power']
         day_power = station_real_kpi_data['day_power']
     
+    data_list = models.dev_kpi_day.objects.filter().order_by('collect_time')[0:30]
+    curve_line_data = []
+    curve_line_days = []
+    for data in data_list:
+        collect_time = str(data.collect_time)
+        collect_time_arr = collect_time.split(" ")
+        curve_line_data.append(data.product_power)
+        curve_line_days.append(collect_time_arr[0])
+    
+    curve_line_data_str = json.dumps(curve_line_data)
+    curve_line_days_str = json.dumps(curve_line_days)
     context ={
         "dev_list":dev_list,
         "first_div_id":first_data.dev_id,
         "month_power":month_power,
         "total_power":total_power,
         "day_power":day_power,
+        "curve_line_data_str":curve_line_data_str,
+        "curve_line_days_str":curve_line_days_str,
     }
     return render(request, 'dashboard.html', context)
 
