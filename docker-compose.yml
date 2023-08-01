@@ -18,6 +18,7 @@ services:
       - MYSQL_USER=webmonitor_user
       - MYSQL_PASSWORD=webmonitor_pass
       - MYSQL_ROOT_PASSWORD=webmonitor_pass
+      - TZ=Asia/Taipei
 
   web:
     build: .
