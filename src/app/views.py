@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http.response import StreamingHttpResponse
 import vlc
 from app import models
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import json
 
 def dashboard(request):
   
@@ -13,9 +13,22 @@ def dashboard(request):
         if(data.dev_id not in dev_list):
             dev_list.append(data.dev_id)
     first_data = data_list.first()
+    
+    station_real_kpi_query=models.config.objects.filter(name='station_real_kpi').first()
+    month_power = total_power = day_power = ''
+    if(station_real_kpi_query!=''):
+        
+        station_real_kpi_data =json.loads(station_real_kpi_query.text)
+        month_power = station_real_kpi_data['month_power']
+        total_power = station_real_kpi_data['total_power']
+        day_power = station_real_kpi_data['day_power']
+    
     context ={
         "dev_list":dev_list,
-        "first_div_id":first_data.dev_id
+        "first_div_id":first_data.dev_id,
+        "month_power":month_power,
+        "total_power":total_power,
+        "day_power":day_power,
     }
     return render(request, 'dashboard.html', context)
 

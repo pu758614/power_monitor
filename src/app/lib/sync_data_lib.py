@@ -9,6 +9,27 @@ class syncDataLib():
     def __init__(self):
         pass
     
+    def syncStationRealKpi(self):
+        api_data = apiLib().getStationRealKpi()
+        if(len(api_data)>0):
+            api_data = api_data[0]
+            if('dataItemMap' in api_data):
+                kpi_data = api_data['dataItemMap']
+                kpi_data_json = json.dumps(kpi_data)
+                data = models.config.objects.filter(name='station_real_kpi').first()
+                if(data==None):
+                    models.config.objects.create(
+                        name = 'station_real_kpi',
+                        text=kpi_data_json
+                    )
+                else:
+                    models.config.objects.filter(id=data.id).update(
+                        text=kpi_data_json,
+                        update_time = timezone.now()
+                    )
+
+    
+    
     def syncDevKpiDay(self):
         data_list = apiLib().getDevKpiDay()
         for data in data_list:
