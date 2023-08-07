@@ -11,5 +11,6 @@ urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
     path('api/getDevKpiDayList', api_view.getDevKpiDayList),
     path('api/getCurveLineData', api_view.getCurveLineData),
+    path('api/getStationRealKpi', api_view.getStationRealKpi),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

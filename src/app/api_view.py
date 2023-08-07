@@ -1,9 +1,22 @@
-from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from app import models
-from rest_framework.response import Response
 from library import lib
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import json
+
+@api_view(["POST"])
+def getStationRealKpi(request):
+    station_real_kpi_query=models.config.objects.filter(name='station_real_kpi').first()
+    month_power = total_power = day_power = ''
+    if(station_real_kpi_query!=''):
+        station_real_kpi_data =json.loads(station_real_kpi_query.text)
+        month_power = station_real_kpi_data['month_power']
+        total_power = station_real_kpi_data['total_power']
+        day_power = station_real_kpi_data['day_power']
+    return lib.apiResponse(0,{
+        "day":day_power,
+        "month":month_power,
+        "total":total_power,
+    })
 
 @api_view(["POST"])
 def getCurveLineData(request):
