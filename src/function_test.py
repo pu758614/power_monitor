@@ -10,5 +10,4 @@ import time
 
 # syncDataLib().syncDevKpiDay()
 
-ts = round(time.time()*1000)
-print(ts)
+r = syncDataLib().syncStationRealKpi()

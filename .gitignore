@@ -2,3 +2,4 @@
 db/*
 src/app/migrations/*
 .env
+src/data/logs/server_log/cron.log
